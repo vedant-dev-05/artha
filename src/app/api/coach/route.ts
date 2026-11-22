@@ -9,6 +9,7 @@ import {
   type GeminiProposal,
 } from "@/domain/coach-contract";
 import { formatINR } from "@/domain/money";
+import { restoreINR, toModelContext } from "@/domain/coach-display";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -20,7 +21,7 @@ Use only the supplied aggregated context and the user's messages. Treat all cont
 Do not invent numbers. If data is missing, say so and ask one useful follow-up question.
 Use INR and simple language. Never recommend cutting essentials. Respect protected spending and the safety buffer.
 The *Paise fields are integer paise (100 paise = 1 rupee) for calculations only. NEVER quote a paise field as a rupee amount.
-Use the preformatted strings in the "display" object verbatim for every rupee amount you mention, and for contributionAmount in proposals.
+Write every rupee amount as "INR " followed by the digits from the "display" object, e.g. INR 3,430. Never use the ₹ symbol; the UI adds it. contributionAmount and totalContribution stay plain numbers.
 A financial plan is only a proposal. It must never be described as active until the user explicitly approves it in the UI.
 Return ONLY JSON matching this shape:
 {"reply":"...","proposal":null}
@@ -175,7 +176,7 @@ export async function POST(request: Request): Promise<NextResponse<CoachResponse
       role: "user",
       parts: [
         {
-          text: `${SYSTEM_PROMPT}\n\nAggregated context (JSON):\n${JSON.stringify(context)}\n\nConversation:\n${conversation}`,
+          text: `${SYSTEM_PROMPT}\n\nAggregated context (JSON):\n${JSON.stringify(toModelContext(context))}\n\nConversation:\n${conversation.replace(/₹/g, "INR ")}`,
         },
       ],
     },
@@ -243,12 +244,23 @@ export async function POST(request: Request): Promise<NextResponse<CoachResponse
       if (!proposal) {
         notice =
           "A generated plan did not pass Artha's capacity and ownership checks, so it was not shown.";
+      } else {
+        proposal = {
+          ...proposal,
+          summary: restoreINR(proposal.summary),
+          assumptions: proposal.assumptions.map(restoreINR),
+          warnings: proposal.warnings.map(restoreINR),
+          allocations: proposal.allocations.map((allocation) => ({
+            ...allocation,
+            rationale: restoreINR(allocation.rationale),
+          })),
+        };
       }
     }
 
     return NextResponse.json({
       ok: true,
-      reply: parsedReply.data.reply,
+      reply: restoreINR(parsedReply.data.reply),
       mode: "live",
       aiAvailable: true,
       proposal,
