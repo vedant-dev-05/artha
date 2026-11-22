@@ -1,0 +1,460 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Money &amp; Expenditure — Artha</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent': '#A5D0B9',
+        'accent-soft': '#CFFBE2',
+        'on-accent': '#0E3727',
+        'success': '#1B6B44',
+        'on-success': '#FFFFFF',
+        'success-container': '#CFFBE2',
+        'on-success-container': '#0E3727',
+        'warning': '#9A5B13',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF0D8',
+        'on-warning-container': '#4A2800',
+        'light-primary': '#012D1D',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1B4332',
+        'light-on-primary-container': '#CFFBE2',
+        'light-secondary': '#526259',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#D5E7DB',
+        'light-on-secondary-container': '#101E17',
+        'light-tertiary': '#401B1B',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#5A302F',
+        'light-on-tertiary-container': '#FFEDEB',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F9FAF6',
+        'light-on-background': '#1A1C1A',
+        'light-surface': '#F9FAF6',
+        'light-surface-dim': '#DADAD7',
+        'light-surface-bright': '#F9FAF6',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3F4F1',
+        'light-surface-container': '#EEEEEB',
+        'light-surface-container-high': '#E8E8E5',
+        'light-surface-container-highest': '#E2E3E0',
+        'light-on-surface': '#1A1C1A',
+        'light-surface-variant': '#DDE4DE',
+        'light-on-surface-variant': '#414844',
+        'light-outline': '#717973',
+        'light-outline-variant': '#C1C8C2',
+        'light-inverse-surface': '#2F312F',
+        'light-inverse-on-surface': '#F0F1EE',
+        'light-inverse-primary': '#A5D0B9',
+        'light-shadow': '#000000',
+        'light-scrim': '#000000',
+        'dark-primary': '#A5D0B9',
+        'dark-on-primary': '#0E3727',
+        'dark-primary-container': '#1B4332',
+        'dark-on-primary-container': '#CFFBE2',
+        'dark-secondary': '#B9CBBF',
+        'dark-on-secondary': '#25342C',
+        'dark-secondary-container': '#3D4D44',
+        'dark-on-secondary-container': '#E3F5E9',
+        'dark-tertiary': '#F5B7B4',
+        'dark-on-tertiary': '#4C2524',
+        'dark-tertiary-container': '#5A302F',
+        'dark-on-tertiary-container': '#FFDAD8',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#121412',
+        'dark-on-background': '#E2E3E0',
+        'dark-surface': '#121412',
+        'dark-surface-dim': '#121412',
+        'dark-surface-bright': '#383A38',
+        'dark-surface-container-lowest': '#0C0F0D',
+        'dark-surface-container-low': '#1A1C1A',
+        'dark-surface-container': '#1E201E',
+        'dark-surface-container-high': '#282A29',
+        'dark-surface-container-highest': '#333533',
+        'dark-on-surface': '#E2E3E0',
+        'dark-surface-variant': '#414844',
+        'dark-on-surface-variant': '#C1C8C2',
+        'dark-outline': '#8B938D',
+        'dark-outline-variant': '#414844',
+        'dark-inverse-surface': '#E2E3E0',
+        'dark-inverse-on-surface': '#2F312F',
+        'dark-inverse-primary': '#3F6653',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '12px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Afacad Flux"', 'sans-serif'],
+        'headline': ['"Afacad Flux"', 'sans-serif'],
+        'title': ['"Instrument Sans"', 'sans-serif'],
+        'body': ['"Instrument Sans"', 'sans-serif'],
+        'label': ['"Instrument Sans"', 'sans-serif'],
+        'mono': ['"Spline Sans Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '44px', letterSpacing: '-0.75px', fontWeight: '700' }],
+        'display-lg-mobile': ['32px', { lineHeight: '36px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.15px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.2px', fontWeight: '500' }],
+        'mono-md': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '250ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block; width: 1em; height: 1em; line-height: 1 !important;
+      box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[884px] max-w-[390px] mx-auto bg-light-surface flex flex-col" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Top App Header -->
+    <header class="px-4 pt-5 pb-3 flex items-center justify-between gap-3">
+      <div>
+        <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">November 2026</p>
+        <h1 class="font-headline text-headline-md text-light-on-surface leading-tight" data-design-text-token="headline-md">Money &amp; spending</h1>
+      </div>
+      <a href="../transaction-import/TransactionImport.html" data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-light-secondary-container text-light-on-secondary-container font-label text-label-md hover:bg-accent-soft transition-colors duration-state-change">
+        <span class="material-symbols-outlined text-[16px]" aria-hidden="true">upload_file</span>
+        <span data-design-text-token="label-md">Import CSV</span>
+      </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-4 pb-24 flex flex-col gap-5">
+
+      <!-- Income & Expenditure Summary (Actual vs Estimated) -->
+      <section aria-label="Monthly money summary">
+        <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="rounded-xl bg-light-surface-container-lowest border border-light-outline-variant/60 p-4 shadow-sm flex flex-col gap-3">
+          <div class="flex items-center justify-between gap-2">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-success-container text-on-success-container font-label text-label-sm" data-design-text-token="label-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-success" aria-hidden="true"></span>
+              <span>Actual · 42 CSV txns</span>
+            </span>
+            <span class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">01–21 Nov</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="rounded-md bg-light-surface-container-low p-3">
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Income received</p>
+              <p class="font-headline text-headline-md text-light-primary tabular-nums" data-design-text-token="headline-md">₹48,000</p>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Actual credits</p>
+            </div>
+            <div class="rounded-md bg-light-surface-container-low p-3">
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Total spent</p>
+              <p class="font-headline text-headline-md text-light-on-surface tabular-nums" data-design-text-token="headline-md">₹33,240</p>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Est. ₹34,500</p>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between gap-2 pt-2 border-t border-light-outline-variant/40">
+            <button type="button" class="inline-flex items-center gap-1.5 font-label text-label-md text-light-primary hover:underline" data-design-text-token="label-md">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">add</span>
+              <span>Add manual expense</span>
+            </button>
+            <a href="../transaction-import/TransactionImport.html" class="font-label text-label-md text-light-on-surface-variant hover:text-light-primary" data-design-text-token="label-md">
+              Update CSV →
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <!-- Category-Wise Spending -->
+      <section aria-label="Spending by category" class="flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Category breakdown</h2>
+          <span class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Fixed vs variable</span>
+        </div>
+
+        <div class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 p-4 flex flex-col gap-3.5">
+          <!-- Fixed: Rent & Bills -->
+          <div class="flex flex-col gap-1.5">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Rent &amp; Utilities</span>
+                <span class="px-2 py-0.5 rounded-full bg-light-surface-container text-light-on-surface-variant font-label text-label-sm" data-design-text-token="label-sm">Fixed</span>
+              </div>
+              <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">₹14,500</span>
+            </div>
+            <div class="w-full h-1.5 rounded-full bg-light-surface-container overflow-hidden">
+              <div class="h-full w-[44%] rounded-full bg-light-primary"></div>
+            </div>
+          </div>
+
+          <!-- Variable: Food & Dining -->
+          <div class="flex flex-col gap-1.5">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Food &amp; Dining</span>
+                <span class="px-2 py-0.5 rounded-full bg-warning-container text-on-warning-container font-label text-label-sm" data-design-text-token="label-sm">+14% vs est.</span>
+              </div>
+              <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">₹8,420</span>
+            </div>
+            <div class="w-full h-1.5 rounded-full bg-light-surface-container overflow-hidden">
+              <div class="h-full w-[25%] rounded-full bg-warning"></div>
+            </div>
+          </div>
+
+          <!-- Variable: Shopping & Gear -->
+          <div class="flex flex-col gap-1.5">
+            <div class="flex items-center justify-between">
+              <span class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Shopping &amp; Essentials</span>
+              <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">₹4,800</span>
+            </div>
+            <div class="w-full h-1.5 rounded-full bg-light-surface-container overflow-hidden">
+              <div class="h-full w-[15%] rounded-full bg-light-primary"></div>
+            </div>
+          </div>
+
+          <!-- Variable: Commute -->
+          <div class="flex flex-col gap-1.5">
+            <div class="flex items-center justify-between">
+              <span class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Commute &amp; Metro</span>
+              <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">₹3,120</span>
+            </div>
+            <div class="w-full h-1.5 rounded-full bg-light-surface-container overflow-hidden">
+              <div class="h-full w-[10%] rounded-full bg-light-primary"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Frequent Merchants -->
+      <section aria-label="Frequent merchants" class="flex flex-col gap-3">
+        <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Frequent merchants</h2>
+        <div class="grid grid-cols-3 gap-2.5">
+          <div class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 p-3 flex flex-col gap-1">
+            <span class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Swiggy</span>
+            <span class="font-mono text-mono-md text-light-primary tabular-nums" data-design-text-token="mono-md">₹3,640</span>
+            <span class="font-label text-label-sm text-light-on-surface-variant tabular-nums" data-design-text-token="label-sm">9 orders</span>
+          </div>
+          <div class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 p-3 flex flex-col gap-1">
+            <span class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Zepto</span>
+            <span class="font-mono text-mono-md text-light-primary tabular-nums" data-design-text-token="mono-md">₹2,150</span>
+            <span class="font-label text-label-sm text-light-on-surface-variant tabular-nums" data-design-text-token="label-sm">6 orders</span>
+          </div>
+          <div class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 p-3 flex flex-col gap-1">
+            <span class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Uber</span>
+            <span class="font-mono text-mono-md text-light-primary tabular-nums" data-design-text-token="mono-md">₹1,980</span>
+            <span class="font-label text-label-sm text-light-on-surface-variant tabular-nums" data-design-text-token="label-sm">11 rides</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Transactions (Tap to Re-categorise) -->
+      <section aria-label="Imported transactions" class="flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Recent transactions</h2>
+          <span class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Tap category to edit</span>
+        </div>
+
+        <div class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 divide-y divide-light-outline-variant/40">
+          <div class="p-3.5 flex items-center justify-between gap-2">
+            <div>
+              <p class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Swiggy UPI</p>
+              <div class="flex items-center gap-2 pt-0.5">
+                <span class="font-body text-body-md text-light-on-surface-variant tabular-nums" data-design-text-token="body-md">20 Nov</span>
+                <button type="button" class="px-2 py-0.5 rounded-full bg-light-secondary-container text-light-on-secondary-container font-label text-label-sm" data-design-text-token="label-sm">Food &amp; Dining ▾</button>
+              </div>
+            </div>
+            <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">-₹420</span>
+          </div>
+
+          <div class="p-3.5 flex items-center justify-between gap-2">
+            <div>
+              <p class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Studio Pixel Payout</p>
+              <div class="flex items-center gap-2 pt-0.5">
+                <span class="font-body text-body-md text-light-on-surface-variant tabular-nums" data-design-text-token="body-md">18 Nov</span>
+                <span class="px-2 py-0.5 rounded-full bg-success-container text-on-success-container font-label text-label-sm" data-design-text-token="label-sm">Income</span>
+              </div>
+            </div>
+            <span class="font-mono text-mono-md text-success tabular-nums" data-design-text-token="mono-md">+₹12,000</span>
+          </div>
+
+          <div class="p-3.5 flex items-center justify-between gap-2">
+            <div>
+              <p class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Uber India</p>
+              <div class="flex items-center gap-2 pt-0.5">
+                <span class="font-body text-body-md text-light-on-surface-variant tabular-nums" data-design-text-token="body-md">17 Nov</span>
+                <button type="button" class="px-2 py-0.5 rounded-full bg-light-secondary-container text-light-on-secondary-container font-label text-label-sm" data-design-text-token="label-sm">Commute ▾</button>
+              </div>
+            </div>
+            <span class="font-mono text-mono-md text-light-on-surface tabular-nums" data-design-text-token="mono-md">-₹245</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Persistent 5-Tab Bottom Navigation -->
+    <nav aria-label="Primary navigation" class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto z-30 bg-light-surface-container-lowest border-t border-light-outline-variant/70 px-2 py-2">
+      <ul class="grid grid-cols-5 items-center">
+        <li>
+          <a href="../home-dashboard/HomeDashboard.html" class="flex flex-col items-center gap-0.5 py-1 text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">home</span>
+            <span class="font-label text-label-sm" data-design-text-token="label-sm">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../goal-detail/GoalDetail.html" class="flex flex-col items-center gap-0.5 py-1 text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">flag</span>
+            <span class="font-label text-label-sm" data-design-text-token="label-sm">My Goals</span>
+          </a>
+        </li>
+        <li>
+          <a href="../money-overview/MoneyOverview.html" aria-current="page" class="flex flex-col items-center gap-0.5 py-1 text-light-primary">
+            <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">account_balance_wallet</span>
+            <span class="font-label text-label-sm" data-design-text-token="label-sm">Money</span>
+          </a>
+        </li>
+        <li>
+          <a href="../financial-companion/FinancialCompanion.html" class="flex flex-col items-center gap-0.5 py-1 text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">auto_awesome</span>
+            <span class="font-label text-label-sm" data-design-text-token="label-sm">Coach</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-overview/ProfileOverview.html" class="flex flex-col items-center gap-0.5 py-1 text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">person</span>
+            <span class="font-label text-label-sm" data-design-text-token="label-sm">Profile</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Persistent Floating AI Companion -->
+    <div class="fixed bottom-[76px] left-1/2 -translate-x-1/2 w-full max-w-[390px] px-4 pointer-events-none z-40 flex flex-col items-end gap-2">
+      <div data-companion-bubble class="pointer-events-auto max-w-[268px] rounded-lg rounded-br-sm bg-light-surface-container-lowest border border-light-outline-variant/80 p-3 shadow-md flex items-start gap-2">
+        <button type="button" data-companion-open class="text-left flex-1">
+          <p class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+            Looks like your spending on dining is a little higher this month. Want to see how it affects your goals?
+          </p>
+        </button>
+        <button type="button" onclick="this.closest(&#39;[data-companion-bubble]&#39;).classList.add(&#39;hidden&#39;)" aria-label="Dismiss tip" class="text-light-on-surface-variant hover:text-light-on-surface p-0.5 shrink-0">
+          <span class="material-symbols-outlined text-[16px]" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <button type="button" data-companion-open aria-label="Open Artha Coach" class="pointer-events-auto relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-light-surface-container-lowest shadow-md border-2 border-light-primary hover:border-light-primary-container transition-colors duration-state-change">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrC8ShV9-KLzOZ6ZYwux5KXpei3u0pLHix8lUCVpxOB07QsTcpYmDO-Zt7lnWS2iSril_eaXnhFVA1c2lUlFy-k5U5NndrHOYRcIxqtEJohxRAxSbv-XX3tc_Crf4o15JKeteyNboM7iEapcjZMgxzP30mHFF2IOB3XaUBCU047wJ4P_Oyh6EgGBAnqfxeaCYg7YBLpho59DinsV_HS7hjvbN6GJ_tgDCcemI0MgtmSeYCR4nWj9Sg" alt="Artha Coach" class="w-full h-full object-cover rounded-full">
+        <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-success border-2 border-light-surface-container-lowest" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- Expandable Conversational Overlay -->
+    <div id="companion-overlay" class="fixed inset-0 z-50 max-w-[390px] mx-auto bg-light-scrim/40 flex flex-col justify-end hidden" role="dialog" aria-modal="true" aria-label="Artha Coach">
+      <div class="rounded-t-xl bg-light-surface border-t border-light-outline-variant p-4 flex flex-col gap-3 shadow-lg">
+        <header class="flex items-center justify-between gap-2 pb-2 border-b border-light-outline-variant/50">
+          <div class="flex items-center gap-2.5">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrC8ShV9-KLzOZ6ZYwux5KXpei3u0pLHix8lUCVpxOB07QsTcpYmDO-Zt7lnWS2iSril_eaXnhFVA1c2lUlFy-k5U5NndrHOYRcIxqtEJohxRAxSbv-XX3tc_Crf4o15JKeteyNboM7iEapcjZMgxzP30mHFF2IOB3XaUBCU047wJ4P_Oyh6EgGBAnqfxeaCYg7YBLpho59DinsV_HS7hjvbN6GJ_tgDCcemI0MgtmSeYCR4nWj9Sg" alt="Artha Coach" class="w-9 h-9 rounded-full object-cover border border-light-primary/40 shrink-0">
+            <div>
+              <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Artha Coach</h2>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Context: Expenditure Analysis</p>
+            </div>
+          </div>
+          <button type="button" data-companion-close aria-label="Close coach" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">close</span>
+          </button>
+        </header>
+        <div id="companion-messages" class="flex flex-col gap-2.5 max-h-[260px] overflow-y-auto">
+          <div class="rounded-lg rounded-bl-sm bg-light-surface-container-lowest border border-light-outline-variant/60 p-3 flex flex-col gap-2">
+            <p class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+              Food &amp; Dining is ₹1,120 above your estimate, mostly from 9 Swiggy orders. Your Emergency Fund is still on track, and trimming 2 orders next week keeps your MacBook timeline steady too.
+            </p>
+            <a href="../financial-planning/FinancialPlanning.html" class="self-start px-3 py-1.5 rounded-full bg-light-primary text-light-on-primary font-label text-label-md" data-design-text-token="label-md">Review goal plan</a>
+          </div>
+        </div>
+        <form id="companion-form" class="flex items-center gap-2 pt-1">
+          <input id="companion-input" type="text" placeholder="Ask about your spending..." class="flex-1 rounded-full bg-light-surface-container-lowest border border-light-outline-variant px-4 py-2 font-body text-body-md text-light-on-surface placeholder:text-light-outline focus:border-light-primary focus:ring-1 focus:ring-light-primary">
+          <button type="submit" aria-label="Send message" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-light-primary text-light-on-primary shrink-0">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('companion-overlay');
+      var messages = document.getElementById('companion-messages');
+      var form = document.getElementById('companion-form');
+      var input = document.getElementById('companion-input');
+      document.querySelectorAll('[data-companion-open]').forEach(function (el) { el.addEventListener('click', function () { overlay.classList.remove('hidden'); }); });
+      document.querySelectorAll('[data-companion-close]').forEach(function (el) { el.addEventListener('click', function () { overlay.classList.add('hidden'); }); });
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var text = input.value.trim();
+        if (!text) return;
+        var u = document.createElement('div');
+        u.className = 'self-end max-w-[85%] rounded-lg rounded-br-sm bg-light-primary text-light-on-primary px-3 py-2 font-body text-body-md';
+        u.textContent = text;
+        messages.appendChild(u);
+        input.value = '';
+        var c = document.createElement('div');
+        c.className = 'rounded-lg rounded-bl-sm bg-light-surface-container-lowest border border-light-outline-variant/60 p-3 font-body text-body-md text-light-on-surface';
+        c.textContent = 'Overall you spent ₹1,260 less than your monthly estimate—your savings capacity is intact!';
+        messages.appendChild(c);
+        messages.scrollTop = messages.scrollHeight;
+      });
+    })();
+  </script>
+
+
+</body></html>

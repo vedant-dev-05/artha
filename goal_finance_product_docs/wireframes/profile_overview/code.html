@@ -1,0 +1,448 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Overview — Artha</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent': '#A5D0B9',
+        'accent-soft': '#CFFBE2',
+        'on-accent': '#0E3727',
+        'success': '#1B6B44',
+        'on-success': '#FFFFFF',
+        'success-container': '#CFFBE2',
+        'on-success-container': '#0E3727',
+        'warning': '#9A5B13',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF0D8',
+        'on-warning-container': '#4A2800',
+        'light-primary': '#012D1D',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1B4332',
+        'light-on-primary-container': '#CFFBE2',
+        'light-secondary': '#526259',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#D5E7DB',
+        'light-on-secondary-container': '#101E17',
+        'light-tertiary': '#401B1B',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#5A302F',
+        'light-on-tertiary-container': '#FFEDEB',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F9FAF6',
+        'light-on-background': '#1A1C1A',
+        'light-surface': '#F9FAF6',
+        'light-surface-dim': '#DADAD7',
+        'light-surface-bright': '#F9FAF6',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3F4F1',
+        'light-surface-container': '#EEEEEB',
+        'light-surface-container-high': '#E8E8E5',
+        'light-surface-container-highest': '#E2E3E0',
+        'light-on-surface': '#1A1C1A',
+        'light-surface-variant': '#DDE4DE',
+        'light-on-surface-variant': '#414844',
+        'light-outline': '#717973',
+        'light-outline-variant': '#C1C8C2',
+        'light-inverse-surface': '#2F312F',
+        'light-inverse-on-surface': '#F0F1EE',
+        'light-inverse-primary': '#A5D0B9',
+        'light-shadow': '#000000',
+        'light-scrim': '#000000',
+        'dark-primary': '#A5D0B9',
+        'dark-on-primary': '#0E3727',
+        'dark-primary-container': '#1B4332',
+        'dark-on-primary-container': '#CFFBE2',
+        'dark-secondary': '#B9CBBF',
+        'dark-on-secondary': '#25342C',
+        'dark-secondary-container': '#3D4D44',
+        'dark-on-secondary-container': '#E3F5E9',
+        'dark-tertiary': '#F5B7B4',
+        'dark-on-tertiary': '#4C2524',
+        'dark-tertiary-container': '#5A302F',
+        'dark-on-tertiary-container': '#FFDAD8',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#121412',
+        'dark-on-background': '#E2E3E0',
+        'dark-surface': '#121412',
+        'dark-surface-dim': '#121412',
+        'dark-surface-bright': '#383A38',
+        'dark-surface-container-lowest': '#0C0F0D',
+        'dark-surface-container-low': '#1A1C1A',
+        'dark-surface-container': '#1E201E',
+        'dark-surface-container-high': '#282A29',
+        'dark-surface-container-highest': '#333533',
+        'dark-on-surface': '#E2E3E0',
+        'dark-surface-variant': '#414844',
+        'dark-on-surface-variant': '#C1C8C2',
+        'dark-outline': '#8B938D',
+        'dark-outline-variant': '#414844',
+        'dark-inverse-surface': '#E2E3E0',
+        'dark-inverse-on-surface': '#2F312F',
+        'dark-inverse-primary': '#3F6653',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '12px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Afacad Flux"', 'sans-serif'],
+        'headline': ['"Afacad Flux"', 'sans-serif'],
+        'title': ['"Instrument Sans"', 'sans-serif'],
+        'body': ['"Instrument Sans"', 'sans-serif'],
+        'label': ['"Instrument Sans"', 'sans-serif'],
+        'mono': ['"Spline Sans Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '44px', letterSpacing: '-0.75px', fontWeight: '700' }],
+        'display-lg-mobile': ['32px', { lineHeight: '36px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.15px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.2px', fontWeight: '500' }],
+        'mono-md': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '250ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block; width: 1em; height: 1em; line-height: 1 !important;
+      box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[884px] max-w-[390px] mx-auto bg-light-surface flex flex-col" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Top Header -->
+    <header class="px-4 pt-5 pb-3 flex items-center justify-between gap-3">
+      <div>
+        <h1 class="font-headline text-headline-lg text-light-on-surface leading-tight" data-design-text-token="headline-lg">Profile</h1>
+        <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Your identity, financial setup &amp; preferences</p>
+      </div>
+      <a href="../settings-overview/SettingsOverview.html" data-component-id="button-icon" data-component-type="button" data-component-variant="icon" aria-label="Open Settings" class="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-light-surface-container-lowest border border-light-outline-variant/70 text-light-on-surface hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change shrink-0">
+        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">settings</span>
+      </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-4 pb-24 flex flex-col gap-5">
+
+      <!-- A. Profile Header Card -->
+      <section aria-label="Profile header">
+        <article class="rounded-xl bg-light-surface-container-lowest border border-light-outline-variant/60 p-4 shadow-sm flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3.5 min-w-0">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrC_mjHZ7SB1WNwAQDtzgc3Wx5xoZDFgpHnvpJgwBmiYJlNyLoaLswpzSsSBkGdvUoE1tqQDKkwVOUl21NeA_yee-iY57hZRmuBnYHrx5Y_K__2aqE_DNjSzH2R7SexgeOK19dVykCL2Aj3_d3tUOIc8iEMkRs-i6T0Adnbu_b-BW9yLF1SArvWt9ZuVR68WVEgyXaDpbhFzpymn5GqavkjmXeIIRrWbSspBh2-PaYdeGgrK7vhi" alt="Aarav Sharma" class="w-14 h-14 rounded-full object-cover border-2 border-light-primary/20 shrink-0">
+            <div class="min-w-0 flex flex-col gap-0.5">
+              <h2 class="font-title text-title-lg text-light-on-surface truncate" data-design-text-token="title-lg">Aarav Sharma</h2>
+              <p class="font-body text-body-md text-light-on-surface-variant truncate" data-design-text-token="body-md">aarav.sharma@gmail.com</p>
+              <span class="inline-flex items-center gap-1 self-start mt-1 px-2.5 py-0.5 rounded-full bg-light-secondary-container text-light-on-secondary-container font-label text-label-sm shrink-0 whitespace-nowrap" data-design-text-token="label-sm">
+                Freelancer · 4-month streak
+              </span>
+            </div>
+          </div>
+          <a href="../profile-edit/ProfileEdit.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-light-surface-container-low border border-light-outline-variant/70 font-label text-label-md text-light-primary hover:bg-light-secondary-container transition-colors duration-state-change shrink-0 whitespace-nowrap">
+            <span class="material-symbols-outlined text-[16px]" aria-hidden="true">edit</span>
+            <span data-design-text-token="label-md">Edit</span>
+          </a>
+        </article>
+      </section>
+
+      <!-- E. Compact My Goals Shortcut -->
+      <section aria-label="My goals summary">
+        <a href="../goal-detail/GoalDetail.html" class="rounded-xl bg-light-primary text-light-on-primary p-4 shadow-sm flex flex-col gap-3 hover:bg-light-primary-container transition-colors duration-state-change">
+          <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[20px] text-accent" aria-hidden="true">flag</span>
+              <h2 class="font-title text-title-md text-light-on-primary" data-design-text-token="title-md">My Goals Snapshot</h2>
+            </div>
+            <span class="inline-flex items-center gap-1 font-label text-label-md text-accent-soft shrink-0">
+              <span data-design-text-token="label-md">View all</span>
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">chevron_right</span>
+            </span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 pt-2 border-t border-light-on-primary/15">
+            <div class="flex flex-col">
+              <span class="font-label text-label-sm text-accent" data-design-text-token="label-sm">Active goals</span>
+              <span class="font-title text-title-lg text-light-on-primary tabular-nums" data-design-text-token="title-lg">2</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label text-label-sm text-accent" data-design-text-token="label-sm">Completed</span>
+              <span class="font-title text-title-lg text-light-on-primary tabular-nums" data-design-text-token="title-lg">1</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label text-label-sm text-accent" data-design-text-token="label-sm">Total saved</span>
+              <span class="font-title text-title-lg text-light-on-primary tabular-nums" data-design-text-token="title-lg">₹1,14,000</span>
+            </div>
+          </div>
+        </a>
+      </section>
+
+      <!-- B. Personal Information Summary -->
+      <section aria-label="Personal information" class="flex flex-col gap-2.5">
+        <div class="flex items-center justify-between">
+          <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Personal information</h2>
+          <a href="../profile-edit/ProfileEdit.html" class="font-label text-label-md text-light-primary hover:underline" data-design-text-token="label-md">Edit</a>
+        </div>
+        <article class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 p-4 shadow-sm flex flex-col gap-3">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Full name</p>
+              <p class="font-body text-body-md text-light-on-surface" data-design-text-token="body-md">Aarav Sharma</p>
+            </div>
+            <div>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Life stage</p>
+              <p class="font-body text-body-md text-light-on-surface" data-design-text-token="body-md">Freelancer</p>
+            </div>
+            <div>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Phone number</p>
+              <p class="font-body text-body-md text-light-on-surface tabular-nums font-medium" data-design-text-token="body-md">+91 98765 43210</p>
+            </div>
+            <div>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Age</p>
+              <p class="font-body text-body-md text-light-on-surface tabular-nums font-medium" data-design-text-token="body-md">24 years</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- C. Financial Profile Summary -->
+      <section aria-label="Financial profile" class="flex flex-col gap-2.5">
+        <div class="flex items-center justify-between">
+          <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Financial profile</h2>
+          <a href="../profile-financial/ProfileFinancial.html" class="font-label text-label-md text-light-primary hover:underline" data-design-text-token="label-md">Update</a>
+        </div>
+        <article class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 p-4 shadow-sm flex flex-col gap-3">
+          <div class="flex items-center justify-between pb-2.5 border-b border-light-outline-variant/40">
+            <div>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Monthly income estimate</p>
+              <p class="font-title text-title-md text-light-on-surface tabular-nums" data-design-text-token="title-md">₹48,000/mo</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-light-secondary-container text-light-on-secondary-container font-label text-label-sm shrink-0 whitespace-nowrap" data-design-text-token="label-sm">Irregular · Project-based</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Fixed commitments</p>
+              <p class="font-body text-body-md text-light-on-surface tabular-nums font-medium" data-design-text-token="body-md">₹22,500/mo</p>
+            </div>
+            <div>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Protected lifestyle</p>
+              <p class="font-body text-body-md text-light-on-surface tabular-nums font-medium" data-design-text-token="body-md">₹4,000/mo</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- D. Financial Preferences Summary -->
+      <section aria-label="Financial preferences" class="flex flex-col gap-2.5">
+        <div class="flex items-center justify-between">
+          <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Financial preferences</h2>
+          <a href="../profile-financial/ProfileFinancial.html" class="font-label text-label-md text-light-primary hover:underline" data-design-text-token="label-md">Adjust</a>
+        </div>
+        <article class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 p-4 shadow-sm flex flex-col gap-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Savings flexibility</span>
+            <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Adaptive (20–30%)</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Goal timeline style</span>
+            <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Balanced (6–12 mos)</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Top priority</span>
+            <span class="font-label text-label-md text-light-primary" data-design-text-token="label-md">Safety net first</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- F. Settings Shortcut -->
+      <section aria-label="Settings shortcut">
+        <a href="../settings-overview/SettingsOverview.html" class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 p-4 shadow-sm hover:border-light-primary/40 transition-colors duration-state-change flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-md bg-light-secondary-container text-light-on-secondary-container shrink-0">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">settings</span>
+            </span>
+            <div>
+              <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Settings &amp; Data</h2>
+              <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Notifications, AI Coach, CSV history &amp; privacy</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-[20px] text-light-on-surface-variant shrink-0" aria-hidden="true">chevron_right</span>
+        </a>
+      </section>
+
+    </main>
+
+    <!-- Persistent 5-Tab Bottom Navigation -->
+    <nav aria-label="Primary navigation" class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto z-30 bg-light-surface-container-lowest border-t border-light-outline-variant/70 px-2 py-2">
+      <ul class="grid grid-cols-5 items-center">
+        <li>
+          <a href="../home-dashboard/HomeDashboard.html" class="flex flex-col items-center gap-0.5 py-1 text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">home</span>
+            <span class="font-label text-label-sm" data-design-text-token="label-sm">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../goal-detail/GoalDetail.html" class="flex flex-col items-center gap-0.5 py-1 text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">flag</span>
+            <span class="font-label text-label-sm" data-design-text-token="label-sm">My Goals</span>
+          </a>
+        </li>
+        <li>
+          <a href="../money-overview/MoneyOverview.html" class="flex flex-col items-center gap-0.5 py-1 text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">account_balance_wallet</span>
+            <span class="font-label text-label-sm" data-design-text-token="label-sm">Money</span>
+          </a>
+        </li>
+        <li>
+          <a href="../financial-companion/FinancialCompanion.html" class="flex flex-col items-center gap-0.5 py-1 text-light-on-surface-variant hover:text-light-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">auto_awesome</span>
+            <span class="font-label text-label-sm" data-design-text-token="label-sm">Coach</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-overview/ProfileOverview.html" aria-current="page" class="flex flex-col items-center gap-0.5 py-1 text-light-primary">
+            <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">person</span>
+            <span class="font-label text-label-sm" data-design-text-token="label-sm">Profile</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Persistent Floating AI Companion -->
+    <div class="fixed bottom-[76px] left-1/2 -translate-x-1/2 w-full max-w-[390px] px-4 pointer-events-none z-40 flex flex-col items-end gap-2">
+      <div data-companion-bubble class="pointer-events-auto max-w-[268px] rounded-lg rounded-br-sm bg-light-surface-container-lowest border border-light-outline-variant/80 p-3 shadow-md flex items-start gap-2">
+        <button type="button" data-companion-open class="text-left flex-1">
+          <p class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+            Your freelance income shifted slightly last month—want to review your baseline?
+          </p>
+        </button>
+        <button type="button" onclick="this.closest(&#39;[data-companion-bubble]&#39;).classList.add(&#39;hidden&#39;)" aria-label="Dismiss tip" class="text-light-on-surface-variant hover:text-light-on-surface p-0.5 shrink-0">
+          <span class="material-symbols-outlined text-[16px]" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <button type="button" data-companion-open aria-label="Open Artha Coach" class="pointer-events-auto relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-light-surface-container-lowest shadow-md border-2 border-light-primary hover:border-light-primary-container transition-colors duration-state-change">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrC8ShV9-KLzOZ6ZYwux5KXpei3u0pLHix8lUCVpxOB07QsTcpYmDO-Zt7lnWS2iSril_eaXnhFVA1c2lUlFy-k5U5NndrHOYRcIxqtEJohxRAxSbv-XX3tc_Crf4o15JKeteyNboM7iEapcjZMgxzP30mHFF2IOB3XaUBCU047wJ4P_Oyh6EgGBAnqfxeaCYg7YBLpho59DinsV_HS7hjvbN6GJ_tgDCcemI0MgtmSeYCR4nWj9Sg" alt="Artha Coach" class="w-full h-full object-cover rounded-full">
+        <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-success border-2 border-light-surface-container-lowest" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- Expandable Conversational Overlay -->
+    <div id="companion-overlay" class="fixed inset-0 z-50 max-w-[390px] mx-auto bg-light-scrim/40 flex flex-col justify-end hidden" role="dialog" aria-modal="true" aria-label="Artha Coach">
+      <div class="rounded-t-xl bg-light-surface border-t border-light-outline-variant p-4 flex flex-col gap-3 shadow-lg">
+        <header class="flex items-center justify-between gap-2 pb-2 border-b border-light-outline-variant/50">
+          <div class="flex items-center gap-2.5">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrC8ShV9-KLzOZ6ZYwux5KXpei3u0pLHix8lUCVpxOB07QsTcpYmDO-Zt7lnWS2iSril_eaXnhFVA1c2lUlFy-k5U5NndrHOYRcIxqtEJohxRAxSbv-XX3tc_Crf4o15JKeteyNboM7iEapcjZMgxzP30mHFF2IOB3XaUBCU047wJ4P_Oyh6EgGBAnqfxeaCYg7YBLpho59DinsV_HS7hjvbN6GJ_tgDCcemI0MgtmSeYCR4nWj9Sg" alt="Artha Coach" class="w-9 h-9 rounded-full object-cover border border-light-primary/40 shrink-0">
+            <div>
+              <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Artha Coach</h2>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Context: Profile &amp; Preferences</p>
+            </div>
+          </div>
+          <button type="button" data-companion-close aria-label="Close coach" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">close</span>
+          </button>
+        </header>
+        <div id="companion-messages" class="flex flex-col gap-2.5 max-h-[260px] overflow-y-auto">
+          <div class="rounded-lg rounded-bl-sm bg-light-surface-container-lowest border border-light-outline-variant/60 p-3 flex flex-col gap-2">
+            <p class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+              Keeping your freelance income estimate current helps me keep your monthly goal targets realistic.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <a href="../profile-financial/ProfileFinancial.html" class="px-3 py-1.5 rounded-full bg-light-primary text-light-on-primary font-label text-label-md" data-design-text-token="label-md">Update financial profile</a>
+              <a href="../settings-data/SettingsData.html" class="px-3 py-1.5 rounded-full bg-light-secondary-container text-light-on-secondary-container font-label text-label-md" data-design-text-token="label-md">Manage CSV data</a>
+            </div>
+          </div>
+        </div>
+        <form id="companion-form" class="flex items-center gap-2 pt-1">
+          <input id="companion-input" type="text" placeholder="Ask about your profile or plan..." class="flex-1 rounded-full bg-light-surface-container-lowest border border-light-outline-variant px-4 py-2 font-body text-body-md text-light-on-surface placeholder:text-light-on-surface-variant focus:border-light-primary focus:ring-1 focus:ring-light-primary">
+          <button type="submit" aria-label="Send message" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-light-primary text-light-on-primary shrink-0">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('companion-overlay');
+      var messages = document.getElementById('companion-messages');
+      var form = document.getElementById('companion-form');
+      var input = document.getElementById('companion-input');
+      document.querySelectorAll('[data-companion-open]').forEach(function (el) {
+        el.addEventListener('click', function () { overlay.classList.remove('hidden'); });
+      });
+      document.querySelectorAll('[data-companion-close]').forEach(function (el) {
+        el.addEventListener('click', function () { overlay.classList.add('hidden'); });
+      });
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var text = input.value.trim();
+        if (!text) return;
+        var userBubble = document.createElement('div');
+        userBubble.className = 'self-end max-w-[85%] rounded-lg rounded-br-sm bg-light-primary text-light-on-primary px-3 py-2 font-body text-body-md';
+        userBubble.textContent = text;
+        messages.appendChild(userBubble);
+        input.value = '';
+        var coachReply = document.createElement('div');
+        coachReply.className = 'rounded-lg rounded-bl-sm bg-light-surface-container-lowest border border-light-outline-variant/60 p-3 font-body text-body-md text-light-on-surface';
+        coachReply.textContent = "Got it! Whenever your income or commitments change, you can update your Financial Profile and I'll recalculate your plan smoothly.";
+        messages.appendChild(coachReply);
+        messages.scrollTop = messages.scrollHeight;
+      });
+    })();
+  </script>
+
+
+</body></html>

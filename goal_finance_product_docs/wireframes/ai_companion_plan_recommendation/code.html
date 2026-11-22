@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Companion: Plan Recommendation — Artha</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent': '#A5D0B9',
+        'accent-soft': '#CFFBE2',
+        'on-accent': '#0E3727',
+        'success': '#1B6B44',
+        'on-success': '#FFFFFF',
+        'success-container': '#CFFBE2',
+        'on-success-container': '#0E3727',
+        'warning': '#9A5B13',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF0D8',
+        'on-warning-container': '#4A2800',
+        'light-primary': '#012D1D',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1B4332',
+        'light-on-primary-container': '#CFFBE2',
+        'light-secondary': '#526259',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#D5E7DB',
+        'light-on-secondary-container': '#101E17',
+        'light-tertiary': '#401B1B',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#5A302F',
+        'light-on-tertiary-container': '#FFEDEB',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F9FAF6',
+        'light-on-background': '#1A1C1A',
+        'light-surface': '#F9FAF6',
+        'light-surface-dim': '#DADAD7',
+        'light-surface-bright': '#F9FAF6',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3F4F1',
+        'light-surface-container': '#EEEEEB',
+        'light-surface-container-high': '#E8E8E5',
+        'light-surface-container-highest': '#E2E3E0',
+        'light-on-surface': '#1A1C1A',
+        'light-surface-variant': '#DDE4DE',
+        'light-on-surface-variant': '#414844',
+        'light-outline': '#717973',
+        'light-outline-variant': '#C1C8C2',
+        'light-inverse-surface': '#2F312F',
+        'light-inverse-on-surface': '#F0F1EE',
+        'light-inverse-primary': '#A5D0B9',
+        'light-shadow': '#000000',
+        'light-scrim': '#000000',
+        'dark-primary': '#A5D0B9',
+        'dark-on-primary': '#0E3727',
+        'dark-primary-container': '#1B4332',
+        'dark-on-primary-container': '#CFFBE2',
+        'dark-secondary': '#B9CBBF',
+        'dark-on-secondary': '#25342C',
+        'dark-secondary-container': '#3D4D44',
+        'dark-on-secondary-container': '#E3F5E9',
+        'dark-tertiary': '#F5B7B4',
+        'dark-on-tertiary': '#4C2524',
+        'dark-tertiary-container': '#5A302F',
+        'dark-on-tertiary-container': '#FFDAD8',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#121412',
+        'dark-on-background': '#E2E3E0',
+        'dark-surface': '#121412',
+        'dark-surface-dim': '#121412',
+        'dark-surface-bright': '#383A38',
+        'dark-surface-container-lowest': '#0C0F0D',
+        'dark-surface-container-low': '#1A1C1A',
+        'dark-surface-container': '#1E201E',
+        'dark-surface-container-high': '#282A29',
+        'dark-surface-container-highest': '#333533',
+        'dark-on-surface': '#E2E3E0',
+        'dark-surface-variant': '#414844',
+        'dark-on-surface-variant': '#C1C8C2',
+        'dark-outline': '#8B938D',
+        'dark-outline-variant': '#414844',
+        'dark-inverse-surface': '#E2E3E0',
+        'dark-inverse-on-surface': '#2F312F',
+        'dark-inverse-primary': '#3F6653',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '12px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Afacad Flux"', 'sans-serif'],
+        'headline': ['"Afacad Flux"', 'sans-serif'],
+        'title': ['"Instrument Sans"', 'sans-serif'],
+        'body': ['"Instrument Sans"', 'sans-serif'],
+        'label': ['"Instrument Sans"', 'sans-serif'],
+        'mono': ['"Spline Sans Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '44px', letterSpacing: '-0.75px', fontWeight: '700' }],
+        'display-lg-mobile': ['32px', { lineHeight: '36px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.15px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.2px', fontWeight: '500' }],
+        'mono-md': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '250ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block; width: 1em; height: 1em; line-height: 1 !important;
+      box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[884px] max-w-[390px] mx-auto bg-light-surface flex flex-col" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Coach Header -->
+    <header class="px-4 pt-5 pb-3 flex items-center justify-between gap-3 border-b border-light-outline-variant/50 bg-light-surface-container-lowest">
+      <div class="flex items-center gap-3">
+        <a href="../companion-initial-plan/CompanionInitialPlan.html" data-component-id="button-icon" data-component-type="button" data-component-variant="icon" aria-label="Back to Initial Planning" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-light-surface-container-lowest border border-light-outline-variant/70 text-light-on-surface hover:bg-light-surface-container-low transition-colors shrink-0">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_back</span>
+        </a>
+        <div class="flex items-center gap-2.5">
+          <img src="https://lh3.googleusercontent.com/aida/ALJJyrC8ShV9-KLzOZ6ZYwux5KXpei3u0pLHix8lUCVpxOB07QsTcpYmDO-Zt7lnWS2iSril_eaXnhFVA1c2lUlFy-k5U5NndrHOYRcIxqtEJohxRAxSbv-XX3tc_Crf4o15JKeteyNboM7iEapcjZMgxzP30mHFF2IOB3XaUBCU047wJ4P_Oyh6EgGBAnqfxeaCYg7YBLpho59DinsV_HS7hjvbN6GJ_tgDCcemI0MgtmSeYCR4nWj9Sg" alt="Artha Coach" class="w-9 h-9 rounded-full object-cover border border-light-primary/30 shrink-0">
+          <div>
+            <h1 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Artha Coach</h1>
+            <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Plan recommendation</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Conversation Thread -->
+    <main class="flex-1 px-4 pt-4 pb-24 flex flex-col gap-4">
+
+      <div class="self-end max-w-[85%] rounded-xl rounded-br-sm bg-light-primary text-light-on-primary p-3.5 shadow-sm">
+        <p class="font-body text-body-md text-pretty" data-design-text-token="body-md">
+          Show me a balanced plan that protects my ₹6,500 freelance buffer.
+        </p>
+      </div>
+
+      <!-- Structured Plan Recommendation Card -->
+      <article class="rounded-xl bg-light-surface-container-lowest border border-light-outline-variant/70 p-4 shadow-sm flex flex-col gap-3.5">
+        <div class="flex items-center justify-between gap-2">
+          <span class="font-title text-title-md text-light-primary" data-design-text-token="title-md">Recommended monthly plan</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-warning-container text-on-warning-container font-label text-label-sm shrink-0 whitespace-nowrap" data-design-text-token="label-sm">Awaiting approval</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 rounded-lg bg-light-surface-container-low p-3">
+          <div>
+            <span class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Monthly contribution</span>
+            <p class="font-headline text-headline-md text-light-on-surface tabular-nums" data-design-text-token="headline-md">₹8,000/mo</p>
+          </div>
+          <div>
+            <span class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Completion</span>
+            <p class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Nov 2027</p>
+          </div>
+        </div>
+
+        <!-- Goal-wise Allocation -->
+        <div class="flex flex-col gap-2">
+          <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Goal-wise allocation</span>
+          <div class="flex items-center justify-between text-body-md">
+            <span class="font-body text-body-md text-light-on-surface" data-design-text-token="body-md">Emergency Fund (Aug 2027)</span>
+            <span class="font-mono text-mono-md text-light-primary tabular-nums" data-design-text-token="mono-md">₹3,000/mo</span>
+          </div>
+          <div class="flex items-center justify-between text-body-md">
+            <span class="font-body text-body-md text-light-on-surface" data-design-text-token="body-md">MacBook Air M3 (Nov 2027)</span>
+            <span class="font-mono text-mono-md text-light-primary tabular-nums" data-design-text-token="mono-md">₹5,000/mo</span>
+          </div>
+        </div>
+
+        <!-- Assumptions & Trade-offs -->
+        <div class="pt-2 border-t border-light-outline-variant/40 flex flex-col gap-1.5">
+          <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Assumptions &amp; trade-offs</p>
+          <p class="font-body text-body-md text-light-on-surface-variant text-pretty" data-design-text-token="body-md">
+            Assumes ₹48,000/mo average income. MacBook finishes 2 months later than maximum pace, in exchange for a ₹6,500 monthly safety buffer.
+          </p>
+        </div>
+
+        <!-- Explicit Accept / Modify / Reject Actions -->
+        <div class="flex flex-col gap-2 pt-1">
+          <button type="button" id="accept-plan-btn" class="w-full py-2.5 rounded-full bg-light-primary text-light-on-primary font-label text-label-lg hover:bg-light-primary-container transition-colors" data-design-text-token="label-lg">
+            Accept this plan
+          </button>
+          <div class="grid grid-cols-2 gap-2">
+            <a href="../companion-adjustment/CompanionAdjustment.html" class="py-2 rounded-full bg-light-secondary-container text-light-on-secondary-container font-label text-label-md text-center" data-design-text-token="label-md">Modify</a>
+            <button type="button" id="reject-plan-btn" class="py-2 rounded-full bg-light-surface-container-low border border-light-outline-variant text-light-on-surface font-label text-label-md" data-design-text-token="label-md">Reject</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Feedback Banner on Accept/Reject -->
+      <div id="plan-feedback" class="hidden rounded-lg bg-success-container text-on-success-container p-3.5 flex items-center justify-between gap-2">
+        <span id="plan-feedback-text" class="font-body text-body-md" data-design-text-token="body-md">Plan accepted and synced across Home &amp; Goals!</span>
+        <a href="../financial-plan-overview/FinancialPlanOverview.html" class="font-label text-label-md underline shrink-0" data-design-text-token="label-md">View Plan</a>
+      </div>
+
+    </main>
+
+    <!-- Chat Input Bar -->
+    <div class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto z-20 bg-light-surface px-4 py-3 border-t border-light-outline-variant/50">
+      <form class="flex items-center gap-2">
+        <input type="text" placeholder="Ask to tweak timelines or amounts..." class="flex-1 rounded-full bg-light-surface-container-lowest border border-light-outline-variant px-4 py-2.5 font-body text-body-md text-light-on-surface placeholder:text-light-on-surface-variant focus:border-light-primary focus:ring-1 focus:ring-light-primary">
+        <button type="submit" aria-label="Send message" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-light-primary text-light-on-primary shrink-0">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+        </button>
+      </form>
+    </div>
+
+  </div>
+  <script>
+    (function () {
+      var fb = document.getElementById('plan-feedback');
+      var fbText = document.getElementById('plan-feedback-text');
+      document.getElementById('accept-plan-btn').addEventListener('click', function () {
+        fb.className = 'rounded-lg bg-success-container text-on-success-container p-3.5 flex items-center justify-between gap-2';
+        fbText.textContent = 'Plan accepted and synced across Home & Goals!';
+      });
+      document.getElementById('reject-plan-btn').addEventListener('click', function () {
+        fb.className = 'rounded-lg bg-light-surface-container-low border border-light-outline-variant text-light-on-surface p-3.5 flex items-center justify-between gap-2';
+        fbText.textContent = 'No changes applied. Tell me what you would like instead.';
+      });
+    })();
+  </script>
+
+
+</body></html>

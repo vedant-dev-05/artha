@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification Preferences — Artha</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent': '#A5D0B9',
+        'accent-soft': '#CFFBE2',
+        'on-accent': '#0E3727',
+        'success': '#1B6B44',
+        'on-success': '#FFFFFF',
+        'success-container': '#CFFBE2',
+        'on-success-container': '#0E3727',
+        'warning': '#9A5B13',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF0D8',
+        'on-warning-container': '#4A2800',
+        'light-primary': '#012D1D',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1B4332',
+        'light-on-primary-container': '#CFFBE2',
+        'light-secondary': '#526259',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#D5E7DB',
+        'light-on-secondary-container': '#101E17',
+        'light-tertiary': '#401B1B',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#5A302F',
+        'light-on-tertiary-container': '#FFEDEB',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F9FAF6',
+        'light-on-background': '#1A1C1A',
+        'light-surface': '#F9FAF6',
+        'light-surface-dim': '#DADAD7',
+        'light-surface-bright': '#F9FAF6',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3F4F1',
+        'light-surface-container': '#EEEEEB',
+        'light-surface-container-high': '#E8E8E5',
+        'light-surface-container-highest': '#E2E3E0',
+        'light-on-surface': '#1A1C1A',
+        'light-surface-variant': '#DDE4DE',
+        'light-on-surface-variant': '#414844',
+        'light-outline': '#717973',
+        'light-outline-variant': '#C1C8C2',
+        'light-inverse-surface': '#2F312F',
+        'light-inverse-on-surface': '#F0F1EE',
+        'light-inverse-primary': '#A5D0B9',
+        'light-shadow': '#000000',
+        'light-scrim': '#000000',
+        'dark-primary': '#A5D0B9',
+        'dark-on-primary': '#0E3727',
+        'dark-primary-container': '#1B4332',
+        'dark-on-primary-container': '#CFFBE2',
+        'dark-secondary': '#B9CBBF',
+        'dark-on-secondary': '#25342C',
+        'dark-secondary-container': '#3D4D44',
+        'dark-on-secondary-container': '#E3F5E9',
+        'dark-tertiary': '#F5B7B4',
+        'dark-on-tertiary': '#4C2524',
+        'dark-tertiary-container': '#5A302F',
+        'dark-on-tertiary-container': '#FFDAD8',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#121412',
+        'dark-on-background': '#E2E3E0',
+        'dark-surface': '#121412',
+        'dark-surface-dim': '#121412',
+        'dark-surface-bright': '#383A38',
+        'dark-surface-container-lowest': '#0C0F0D',
+        'dark-surface-container-low': '#1A1C1A',
+        'dark-surface-container': '#1E201E',
+        'dark-surface-container-high': '#282A29',
+        'dark-surface-container-highest': '#333533',
+        'dark-on-surface': '#E2E3E0',
+        'dark-surface-variant': '#414844',
+        'dark-on-surface-variant': '#C1C8C2',
+        'dark-outline': '#8B938D',
+        'dark-outline-variant': '#414844',
+        'dark-inverse-surface': '#E2E3E0',
+        'dark-inverse-on-surface': '#2F312F',
+        'dark-inverse-primary': '#3F6653',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '12px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Afacad Flux"', 'sans-serif'],
+        'headline': ['"Afacad Flux"', 'sans-serif'],
+        'title': ['"Instrument Sans"', 'sans-serif'],
+        'body': ['"Instrument Sans"', 'sans-serif'],
+        'label': ['"Instrument Sans"', 'sans-serif'],
+        'mono': ['"Spline Sans Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '44px', letterSpacing: '-0.75px', fontWeight: '700' }],
+        'display-lg-mobile': ['32px', { lineHeight: '36px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.15px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.2px', fontWeight: '500' }],
+        'mono-md': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '250ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block; width: 1em; height: 1em; line-height: 1 !important;
+      box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[884px] max-w-[390px] mx-auto bg-light-surface flex flex-col" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Focused Top Bar -->
+    <header class="px-4 pt-5 pb-3 flex items-center gap-3">
+      <a href="../settings-overview/SettingsOverview.html" data-component-id="button-icon" data-component-type="button" data-component-variant="icon" aria-label="Back to Settings" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-light-surface-container-lowest border border-light-outline-variant/70 text-light-on-surface hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change shrink-0">
+        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_back</span>
+      </a>
+      <div>
+        <h1 class="font-headline text-headline-md text-light-on-surface leading-tight" data-design-text-token="headline-md">Notifications</h1>
+        <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Every reminder is optional &amp; under your control</p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-4 pb-20 flex flex-col gap-5">
+
+      <!-- Goal & Progress Alerts -->
+      <section aria-label="Goal and progress notifications" class="flex flex-col gap-2">
+        <h2 class="font-label text-label-md text-light-on-surface-variant px-1" data-design-text-token="label-md">Goals &amp; milestones</h2>
+        <div class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 shadow-sm divide-y divide-light-outline-variant/40">
+
+          <!-- Toggle 1 -->
+          <div class="p-4 flex items-center justify-between gap-3">
+            <div class="flex flex-col gap-0.5">
+              <p class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Goal milestone reminders</p>
+              <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Celebrate when you hit 25%, 50%, 75% &amp; 100%</p>
+            </div>
+            <button type="button" role="switch" aria-checked="true" aria-label="Toggle goal milestone reminders" class="toggle-switch relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full bg-light-primary p-0.5 transition-colors duration-state-change">
+              <span class="inline-block h-5 w-5 translate-x-5 rounded-full bg-light-on-primary shadow-sm transition-transform duration-state-change"></span>
+            </button>
+          </div>
+
+          <!-- Toggle 2 -->
+          <div class="p-4 flex items-center justify-between gap-3">
+            <div class="flex flex-col gap-0.5">
+              <p class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Progress updates</p>
+              <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Gentle pacing alerts when a goal drifts</p>
+            </div>
+            <button type="button" role="switch" aria-checked="true" aria-label="Toggle progress updates" class="toggle-switch relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full bg-light-primary p-0.5 transition-colors duration-state-change">
+              <span class="inline-block h-5 w-5 translate-x-5 rounded-full bg-light-on-primary shadow-sm transition-transform duration-state-change"></span>
+            </button>
+          </div>
+
+          <!-- Toggle 3 -->
+          <div class="p-4 flex items-center justify-between gap-3">
+            <div class="flex flex-col gap-0.5">
+              <p class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Savings reminders</p>
+              <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Nudge on your preferred transfer day</p>
+            </div>
+            <button type="button" role="switch" aria-checked="false" aria-label="Toggle savings reminders" class="toggle-switch relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full bg-light-surface-container-high p-0.5 transition-colors duration-state-change">
+              <span class="inline-block h-5 w-5 translate-x-0 rounded-full bg-light-surface-container-lowest shadow-sm transition-transform duration-state-change"></span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Summaries & Coach -->
+      <section aria-label="Summaries and AI companion notifications" class="flex flex-col gap-2">
+        <h2 class="font-label text-label-md text-light-on-surface-variant px-1" data-design-text-token="label-md">Summaries &amp; coach</h2>
+        <div class="rounded-lg bg-light-surface-container-lowest border border-light-outline-variant/60 shadow-sm divide-y divide-light-outline-variant/40">
+
+          <!-- Toggle 4 -->
+          <div class="p-4 flex items-center justify-between gap-3">
+            <div class="flex flex-col gap-0.5">
+              <p class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Weekly financial summaries</p>
+              <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Sunday evening recap of spending &amp; surplus</p>
+            </div>
+            <button type="button" role="switch" aria-checked="true" aria-label="Toggle weekly financial summaries" class="toggle-switch relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full bg-light-primary p-0.5 transition-colors duration-state-change">
+              <span class="inline-block h-5 w-5 translate-x-5 rounded-full bg-light-on-primary shadow-sm transition-transform duration-state-change"></span>
+            </button>
+          </div>
+
+          <!-- Toggle 5 -->
+          <div class="p-4 flex items-center justify-between gap-3">
+            <div class="flex flex-col gap-0.5">
+              <p class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">AI companion check-ins</p>
+              <p class="font-body text-body-md text-light-on-surface-variant text-balance" data-design-text-token="body-md">Occasional friendly tips when you open Artha</p>
+            </div>
+            <button type="button" role="switch" aria-checked="true" aria-label="Toggle AI companion check-ins" class="toggle-switch relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full bg-light-primary p-0.5 transition-colors duration-state-change">
+              <span class="inline-block h-5 w-5 translate-x-5 rounded-full bg-light-on-primary shadow-sm transition-transform duration-state-change"></span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <p class="font-body text-body-md text-light-on-surface-variant px-1 text-pretty" data-design-text-token="body-md">
+        Artha never sends promotional spam or urgent debt-style alerts. You can mute everything anytime.
+      </p>
+
+    </main>
+
+    <!-- Persistent Floating AI Companion -->
+    <div class="fixed bottom-5 left-1/2 -translate-x-1/2 w-full max-w-[390px] px-4 pointer-events-none z-40 flex flex-col items-end gap-2">
+      <button type="button" data-companion-open aria-label="Open Artha Coach" class="pointer-events-auto relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-light-surface-container-lowest shadow-md border-2 border-light-primary hover:border-light-primary-container transition-colors duration-state-change">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrC8ShV9-KLzOZ6ZYwux5KXpei3u0pLHix8lUCVpxOB07QsTcpYmDO-Zt7lnWS2iSril_eaXnhFVA1c2lUlFy-k5U5NndrHOYRcIxqtEJohxRAxSbv-XX3tc_Crf4o15JKeteyNboM7iEapcjZMgxzP30mHFF2IOB3XaUBCU047wJ4P_Oyh6EgGBAnqfxeaCYg7YBLpho59DinsV_HS7hjvbN6GJ_tgDCcemI0MgtmSeYCR4nWj9Sg" alt="Artha Coach" class="w-full h-full object-cover rounded-full">
+        <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-success border-2 border-light-surface-container-lowest" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- Expandable Conversational Overlay -->
+    <div id="companion-overlay" class="fixed inset-0 z-50 max-w-[390px] mx-auto bg-light-scrim/40 flex flex-col justify-end hidden" role="dialog" aria-modal="true" aria-label="Artha Coach">
+      <div class="rounded-t-xl bg-light-surface border-t border-light-outline-variant p-4 flex flex-col gap-3 shadow-lg">
+        <header class="flex items-center justify-between gap-2 pb-2 border-b border-light-outline-variant/50">
+          <div class="flex items-center gap-2.5">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrC8ShV9-KLzOZ6ZYwux5KXpei3u0pLHix8lUCVpxOB07QsTcpYmDO-Zt7lnWS2iSril_eaXnhFVA1c2lUlFy-k5U5NndrHOYRcIxqtEJohxRAxSbv-XX3tc_Crf4o15JKeteyNboM7iEapcjZMgxzP30mHFF2IOB3XaUBCU047wJ4P_Oyh6EgGBAnqfxeaCYg7YBLpho59DinsV_HS7hjvbN6GJ_tgDCcemI0MgtmSeYCR4nWj9Sg" alt="Artha Coach" class="w-9 h-9 rounded-full object-cover border border-light-primary/40 shrink-0">
+            <div>
+              <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Artha Coach</h2>
+              <p class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Context: Notifications</p>
+            </div>
+          </div>
+          <button type="button" data-companion-close aria-label="Close coach" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">close</span>
+          </button>
+        </header>
+        <div class="rounded-lg rounded-bl-sm bg-light-surface-container-lowest border border-light-outline-variant/60 p-3">
+          <p class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+            Most freelancers prefer just weekly summaries and milestone celebrations—zero daily noise.
+          </p>
+        </div>
+        <form class="flex items-center gap-2 pt-1">
+          <input type="text" placeholder="Ask about notifications..." class="flex-1 rounded-full bg-light-surface-container-lowest border border-light-outline-variant px-4 py-2 font-body text-body-md text-light-on-surface placeholder:text-light-on-surface-variant focus:border-light-primary focus:ring-1 focus:ring-light-primary">
+          <button type="submit" aria-label="Send message" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-light-primary text-light-on-primary shrink-0">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">send</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    (function () {
+      document.querySelectorAll('.toggle-switch').forEach(function (sw) {
+        sw.addEventListener('click', function () {
+          var checked = sw.getAttribute('aria-checked') === 'true';
+          var next = !checked;
+          sw.setAttribute('aria-checked', String(next));
+          var knob = sw.querySelector('span');
+          if (next) {
+            sw.classList.remove('bg-light-surface-container-high');
+            sw.classList.add('bg-light-primary');
+            knob.classList.remove('translate-x-0', 'bg-light-surface-container-lowest');
+            knob.classList.add('translate-x-5', 'bg-light-on-primary');
+          } else {
+            sw.classList.remove('bg-light-primary');
+            sw.classList.add('bg-light-surface-container-high');
+            knob.classList.remove('translate-x-5', 'bg-light-on-primary');
+            knob.classList.add('translate-x-0', 'bg-light-surface-container-lowest');
+          }
+        });
+      });
+      var overlay = document.getElementById('companion-overlay');
+      document.querySelectorAll('[data-companion-open]').forEach(function (el) {
+        el.addEventListener('click', function () { overlay.classList.remove('hidden'); });
+      });
+      document.querySelectorAll('[data-companion-close]').forEach(function (el) {
+        el.addEventListener('click', function () { overlay.classList.add('hidden'); });
+      });
+    })();
+  </script>
+
+
+</body></html>
