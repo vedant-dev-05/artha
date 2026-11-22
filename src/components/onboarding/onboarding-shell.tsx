@@ -96,7 +96,7 @@ export function OnboardingShell({
       <main className="flex flex-1 flex-col gap-4 px-4 pb-8 pt-2">{children}</main>
 
       {coachNote && (
-        <div className="sticky bottom-0 z-10 px-4 pb-4 pt-2">
+        <div className="px-4 pb-4 pt-2">
           <div className="flex items-start gap-2 rounded-xl bg-primary px-3 py-3 text-on-primary shadow-lg">
             <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-on-primary/15">
               <Icon name="auto_awesome" size={15} filled />
