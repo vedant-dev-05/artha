@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
+import { useAppStore } from "@/store/app-store";
 import { Icon } from "@/components/ui/icon";
 import { InlineMessage } from "@/components/ui/states";
 
@@ -30,6 +32,14 @@ export function OnboardingShell({
   backHref,
   coachNote,
 }: OnboardingShellProps) {
+  const router = useRouter();
+  const setEntryChoice = useAppStore((state) => state.setEntryChoice);
+
+  function handleSaveAndExit() {
+    setEntryChoice("demo");
+    router.push("/home");
+  }
+
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-[430px] flex-col bg-background">
       <header className="sticky top-0 z-10 bg-background/95 px-4 pb-3 pt-4 backdrop-blur">
@@ -55,12 +65,13 @@ export function OnboardingShell({
                 Step {step} of 7
               </span>
             )}
-            <Link
-              href="/home"
+            <button
+              type="button"
+              onClick={handleSaveAndExit}
               className="font-label text-label-md text-primary hover:underline"
             >
               Save &amp; exit
-            </Link>
+            </button>
           </div>
         </div>
         {step && (

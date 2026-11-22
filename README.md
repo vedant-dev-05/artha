@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:3000>. The root route redirects to `/home`.
+Open <http://localhost:3000>. A fresh visitor lands on the onboarding welcome screen, where they can either start the seven-step setup or open the clearly labelled demo workspace. The choice is saved in this browser, so later visits go straight to `/home`.
 
 ### Scripts
 

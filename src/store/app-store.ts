@@ -88,6 +88,8 @@ interface AppStore {
   data: AppData;
   hydrated: boolean;
   demoBannerDismissed: boolean;
+  /** First-visit choice: null means the welcome/onboarding gate is still pending. */
+  entryChoice: "demo" | "onboarding" | null;
   coachOpen: boolean;
   toast: { id: number; message: string; tone: "success" | "info" | "error" } | null;
   onboardingDraft: OnboardingDraft | null;
@@ -120,6 +122,7 @@ interface AppStore {
   acceptOnboardingPlan: () => void;
   completeOnboarding: () => void;
   cancelOnboarding: () => void;
+  setEntryChoice: (choice: "demo" | "onboarding") => void;
   dismissDemoBanner: () => void;
   resetDemo: () => void;
   openCoach: () => void;
@@ -136,6 +139,7 @@ export const useAppStore = create<AppStore>()(
       data: initialData,
       hydrated: false,
       demoBannerDismissed: false,
+      entryChoice: null,
       coachOpen: false,
       toast: null,
       onboardingDraft: null,
@@ -697,10 +701,13 @@ export const useAppStore = create<AppStore>()(
             data: buildWorkspaceFromDraft(draft, { approved: true }),
             onboardingDraft: null,
             demoBannerDismissed: false,
+            entryChoice: "demo",
           };
         }),
 
       cancelOnboarding: () => set({ onboardingDraft: null }),
+
+      setEntryChoice: (choice) => set({ entryChoice: choice }),
 
       dismissDemoBanner: () => set({ demoBannerDismissed: true }),
 
@@ -721,6 +728,7 @@ export const useAppStore = create<AppStore>()(
           },
           demoBannerDismissed: false,
           onboardingDraft: null,
+          entryChoice: "demo",
         });
       },
     }),
@@ -732,6 +740,7 @@ export const useAppStore = create<AppStore>()(
       partialize: (state) => ({
         data: state.data,
         demoBannerDismissed: state.demoBannerDismissed,
+        entryChoice: state.entryChoice,
         onboardingDraft: state.onboardingDraft,
       }),
       migrate: (persistedState, version) => {
@@ -739,6 +748,7 @@ export const useAppStore = create<AppStore>()(
           return {
             data: createSeedData(),
             demoBannerDismissed: false,
+            entryChoice: null,
             onboardingDraft: null,
           } as unknown as AppStore;
         }

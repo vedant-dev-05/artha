@@ -1,5 +1,10 @@
-import { redirect } from "next/navigation";
+import { StoreHydrator } from "@/components/providers/store-hydrator";
+import { EntryRouter } from "@/components/providers/entry-router";
 
 export default function RootPage() {
-  redirect("/home");
+  return (
+    <StoreHydrator>
+      <EntryRouter />
+    </StoreHydrator>
+  );
 }

@@ -22,6 +22,7 @@ function resetToSeed() {
   useAppStore.setState({
     data: createSeedData(),
     onboardingDraft: null,
+    entryChoice: null,
     coachOpen: false,
     toast: null,
   });
@@ -85,6 +86,28 @@ describe("onboarding workspace safety", () => {
     expect(after.data.plans[0]?.status).toBe("active");
     expect(after.data.goals).toHaveLength(1);
     expect(after.onboardingDraft).toBeNull();
+    expect(after.entryChoice).toBe("demo");
+  });
+});
+
+describe("first-visit entry choice", () => {
+  it("starts unset so the root route opens the onboarding welcome screen", () => {
+    resetToSeed();
+    expect(useAppStore.getState().entryChoice).toBeNull();
+  });
+
+  it("persists whichever entry option the visitor chooses", () => {
+    resetToSeed();
+    useAppStore.getState().setEntryChoice("onboarding");
+    expect(useAppStore.getState().entryChoice).toBe("onboarding");
+    useAppStore.getState().setEntryChoice("demo");
+    expect(useAppStore.getState().entryChoice).toBe("demo");
+  });
+
+  it("marks the demo workspace as chosen when demo data is reset", () => {
+    resetToSeed();
+    useAppStore.getState().resetDemo();
+    expect(useAppStore.getState().entryChoice).toBe("demo");
   });
 });
 

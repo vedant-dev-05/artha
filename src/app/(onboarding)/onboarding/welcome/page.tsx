@@ -17,11 +17,18 @@ export default function WelcomePage() {
   const router = useRouter();
   const startOnboarding = useAppStore((state) => state.startOnboarding);
   const setOnboardingStep = useAppStore((state) => state.setOnboardingStep);
+  const setEntryChoice = useAppStore((state) => state.setEntryChoice);
 
   function handleStart() {
+    setEntryChoice("onboarding");
     startOnboarding();
     setOnboardingStep(1);
     router.push("/onboarding/profile");
+  }
+
+  function handleDemo() {
+    setEntryChoice("demo");
+    router.push("/home");
   }
 
   return (
@@ -64,7 +71,7 @@ export default function WelcomePage() {
           Get Started
           <Icon name="arrow_forward" size={18} />
         </Button>
-        <Button variant="ghost" fullWidth onClick={() => router.push("/home")}>
+        <Button variant="ghost" fullWidth onClick={handleDemo}>
           Explore the demo workspace instead
         </Button>
         <p className="text-center font-body text-label-md text-on-surface-variant">
