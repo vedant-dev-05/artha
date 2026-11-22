@@ -91,7 +91,7 @@ GEMINI_API_KEY=
 GEMINI_MODEL=gemini-3.5-flash
 ```
 
-Do not prefix the key with `NEXT_PUBLIC_`. The demo is deployed at <https://artha-seven-lake.vercel.app> from <https://github.com/vedant-dev-05/artha>. Environment variables are configured as server-side secrets in the Vercel project.
+Do not prefix the key with `NEXT_PUBLIC_`. The demo is deployed at <https://artha-navy.vercel.app> from <https://github.com/vedant-dev-05/artha>. Environment variables are configured as server-side secrets in the Vercel project.
 
 ## Known limits
 
