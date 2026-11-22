@@ -123,6 +123,7 @@ interface AppStore {
   completeOnboarding: () => void;
   cancelOnboarding: () => void;
   setEntryChoice: (choice: "demo" | "onboarding") => void;
+  logout: () => void;
   dismissDemoBanner: () => void;
   resetDemo: () => void;
   openCoach: () => void;
@@ -708,6 +709,17 @@ export const useAppStore = create<AppStore>()(
       cancelOnboarding: () => set({ onboardingDraft: null }),
 
       setEntryChoice: (choice) => set({ entryChoice: choice }),
+
+      // End the current demo session without deleting the browser-saved workspace.
+      // The next visit is greeted by the welcome gate again.
+      logout: () =>
+        set({
+          entryChoice: null,
+          onboardingDraft: null,
+          coachOpen: false,
+          demoBannerDismissed: false,
+          toast: null,
+        }),
 
       dismissDemoBanner: () => set({ demoBannerDismissed: true }),
 

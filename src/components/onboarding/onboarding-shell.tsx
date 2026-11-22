@@ -36,8 +36,9 @@ export function OnboardingShell({
   const setEntryChoice = useAppStore((state) => state.setEntryChoice);
 
   function handleSaveAndExit() {
-    setEntryChoice("demo");
-    router.push("/home");
+    // Keep the saved onboarding draft pending; the welcome screen offers Resume.
+    setEntryChoice("onboarding");
+    router.push("/onboarding/welcome");
   }
 
   return (

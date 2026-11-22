@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAppStore } from "@/store/app-store";
 import { TopBar } from "@/components/navigation/top-bar";
+import { LogoutButton } from "@/components/auth/logout-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Icon } from "@/components/ui/icon";
@@ -185,6 +186,7 @@ export default function SettingsPage() {
               <Icon name="restart_alt" size={18} />
               Reset demo data
             </button>
+            <LogoutButton />
           </div>
           <p className="font-body text-body-md text-on-surface-variant">
             Replay setup starts a guided nine-screen flow and replaces this workspace only when you

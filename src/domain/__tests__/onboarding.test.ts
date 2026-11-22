@@ -7,6 +7,7 @@ import {
 } from "@/domain/onboarding";
 import { calculateCapacity } from "@/domain/planning";
 import { rupeesToPaise } from "@/domain/money";
+import { onboardingRouteForStep } from "@/domain/onboarding-routes";
 
 const AS_OF = "2026-11-22";
 const NOW = "2026-11-22T09:00:00.000Z";
@@ -102,5 +103,17 @@ describe("buildWorkspaceFromDraft", () => {
     expect(workspace.user.displayName).toBe("You");
     expect(workspace.preferences.bufferPercent).toBe(10);
     expect(workspace.preferences.bufferMinimumPaise).toBe(rupeesToPaise(500));
+  });
+});
+
+describe("onboarding resume routes", () => {
+  it("maps each saved step to its screen", () => {
+    expect(onboardingRouteForStep(1)).toBe("/onboarding/profile");
+    expect(onboardingRouteForStep(4)).toBe("/onboarding/expenses");
+    expect(onboardingRouteForStep(7)).toBe("/onboarding/plan");
+  });
+
+  it("falls back to the first data step for an unknown step", () => {
+    expect(onboardingRouteForStep(99)).toBe("/onboarding/profile");
   });
 });

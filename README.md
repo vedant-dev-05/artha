@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:3000>. A fresh visitor lands on the onboarding welcome screen, where they can either start the seven-step setup or open the clearly labelled demo workspace. The choice is saved in this browser, so later visits go straight to `/home`.
+Open <http://localhost:3000>. A fresh visitor lands on the onboarding welcome screen, where they can either start the seven-step setup or open the clearly labelled demo workspace. The choice is saved in this browser. "Save & exit" keeps the setup draft pending and returns to the welcome screen with a Resume option; it never silently opens the demo. Log out from Profile or Settings to end the visit and see the welcome gate again.
 
 ### Scripts
 

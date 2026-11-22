@@ -6,6 +6,7 @@ import { getActivePlan, getCapacity, getGoalTotals } from "@/domain/selectors";
 import { formatINR } from "@/domain/money";
 import { TopBar } from "@/components/navigation/top-bar";
 import { Avatar } from "@/components/navigation/top-bar";
+import { LogoutButton } from "@/components/auth/logout-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Icon } from "@/components/ui/icon";
@@ -153,6 +154,16 @@ export default function ProfilePage() {
           </div>
           <Icon name="chevron_right" size={18} className="text-outline" />
         </Link>
+
+        <Card className="flex flex-col gap-3 p-4">
+          <div>
+            <p className="font-title text-title-md text-on-surface">Session</p>
+            <p className="mt-0.5 font-body text-body-md text-on-surface-variant">
+              End this demo visit. Your saved data stays in this browser.
+            </p>
+          </div>
+          <LogoutButton fullWidth />
+        </Card>
 
         <Card className="p-4">
           <p className="font-label text-label-md text-on-surface-variant">Active plan</p>

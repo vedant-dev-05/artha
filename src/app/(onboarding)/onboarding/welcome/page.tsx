@@ -6,6 +6,8 @@ import { OnboardingShell } from "@/components/onboarding/onboarding-shell";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Icon } from "@/components/ui/icon";
+import { InlineMessage } from "@/components/ui/states";
+import { onboardingRouteForStep } from "@/domain/onboarding-routes";
 
 const highlights = [
   { icon: "flag", title: "Goal-first balance", text: "Start with what matters to you" },
@@ -18,12 +20,19 @@ export default function WelcomePage() {
   const startOnboarding = useAppStore((state) => state.startOnboarding);
   const setOnboardingStep = useAppStore((state) => state.setOnboardingStep);
   const setEntryChoice = useAppStore((state) => state.setEntryChoice);
+  const onboardingDraft = useAppStore((state) => state.onboardingDraft);
+  const currentStep = useAppStore((state) => state.data.onboarding.currentStep);
 
   function handleStart() {
     setEntryChoice("onboarding");
     startOnboarding();
     setOnboardingStep(1);
     router.push("/onboarding/profile");
+  }
+
+  function handleResume() {
+    setEntryChoice("onboarding");
+    router.push(onboardingRouteForStep(currentStep));
   }
 
   function handleDemo() {
@@ -66,11 +75,29 @@ export default function WelcomePage() {
         ))}
       </Card>
 
+      {onboardingDraft && (
+        <InlineMessage tone="info" icon="info">
+          Your setup is saved in this browser. Resume where you left off, or start over.
+        </InlineMessage>
+      )}
+
       <div className="mt-auto flex flex-col gap-2 pt-4">
-        <Button size="lg" fullWidth onClick={handleStart}>
-          Get Started
-          <Icon name="arrow_forward" size={18} />
-        </Button>
+        {onboardingDraft ? (
+          <>
+            <Button size="lg" fullWidth onClick={handleResume}>
+              Resume setup
+              <Icon name="arrow_forward" size={18} />
+            </Button>
+            <Button variant="outline" fullWidth onClick={handleStart}>
+              Start over
+            </Button>
+          </>
+        ) : (
+          <Button size="lg" fullWidth onClick={handleStart}>
+            Get Started
+            <Icon name="arrow_forward" size={18} />
+          </Button>
+        )}
         <Button variant="ghost" fullWidth onClick={handleDemo}>
           Explore the demo workspace instead
         </Button>

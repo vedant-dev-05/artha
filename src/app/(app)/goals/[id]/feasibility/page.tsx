@@ -108,7 +108,7 @@ export default function GoalFeasibilityPage() {
     );
     const summary = `Reviewed from ${progress.goal.name} feasibility: ${chosen.label}. ${formatINR(
       applied,
-    )}/month applied to this goal${capped ? " after protecting other goals' allocations" : ""}. Awaiting your approval.`;
+    )}/month applied to this goal${capped ? " after protecting other goals' allocations" : ""}.`;
     const planId = proposePlan({ source: "user_adjustment", allocations, summary });
     if (!planId) {
       showToast("A plan proposal could not be created. Check your active goals.", "error");

@@ -109,6 +109,20 @@ describe("first-visit entry choice", () => {
     useAppStore.getState().resetDemo();
     expect(useAppStore.getState().entryChoice).toBe("demo");
   });
+
+  it("logs out without deleting the saved demo workspace", () => {
+    resetToSeed();
+    const goalIds = useAppStore.getState().data.goals.map((goal) => goal.id);
+    useAppStore.getState().setEntryChoice("demo");
+    useAppStore.getState().startOnboarding();
+    useAppStore.getState().logout();
+
+    const after = useAppStore.getState();
+    expect(after.entryChoice).toBeNull();
+    expect(after.onboardingDraft).toBeNull();
+    expect(after.coachOpen).toBe(false);
+    expect(after.data.goals.map((goal) => goal.id)).toEqual(goalIds);
+  });
 });
 
 describe("goal lifecycle", () => {
